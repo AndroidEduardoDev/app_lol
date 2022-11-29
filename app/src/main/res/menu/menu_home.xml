@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/top"
+        android:icon="@drawable/ic_top"
+        android:title="Top"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/jungle"
+        android:icon="@drawable/ic_jungle"
+        android:title="Jungla"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/mid"
+        android:checked="true"
+        android:icon="@drawable/ic_mid"
+        android:title="Mid"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/bot"
+        android:icon="@drawable/ic_bot"
+        android:title="Bot"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/support"
+        android:icon="@drawable/ic_support"
+        android:title="Soporte"
+        app:showAsAction="ifRoom" />
+
+</menu>
