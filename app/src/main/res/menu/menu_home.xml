@@ -6,17 +6,19 @@
         android:id="@+id/top"
         android:icon="@drawable/ic_top"
         android:title="Top"
+        android:checked="false"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/jungle"
         android:icon="@drawable/ic_jungle"
         android:title="Jungla"
+        android:checked="false"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/mid"
-        android:checked="true"
+        android:checked="false"
         android:icon="@drawable/ic_mid"
         android:title="Mid"
         app:showAsAction="ifRoom" />
@@ -29,6 +31,7 @@
 
     <item
         android:id="@+id/support"
+        android:checked="false"
         android:icon="@drawable/ic_support"
         android:title="Soporte"
         app:showAsAction="ifRoom" />

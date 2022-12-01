@@ -2,6 +2,7 @@ package com.artstation.leagueofleguends
 
 import android.graphics.Color
 import android.os.Bundle
+import android.webkit.URLUtil
 import androidx.appcompat.app.AppCompatActivity
 import com.artstation.leagueofleguends.data.Champion
 import com.artstation.leagueofleguends.databinding.ActivityDetailChampionBinding
@@ -24,13 +25,18 @@ class DetailChampionActivity : AppCompatActivity() {
     }
 
 
-
     private fun setImage() {
         val number = Random.nextInt(0, 3)
-        Glide.with(this)
-            .load(
-                "https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.name}_" + number + ".jpg"
-            )
-            .into(binding.image)
+
+        if (URLUtil.isValidUrl("https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.champion?.id}_" + number + ".jpg")) {
+            Glide.with(this)
+                .load("https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.champion?.id}_" + number + ".jpg")
+                .into(binding.image)
+        } else {
+            Glide.with(this)
+                .load("https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${champion.champion?.id}_0.jpg")
+                .into(binding.image)
+        }
+
     }
 }

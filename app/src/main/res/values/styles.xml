@@ -8,5 +8,9 @@
     <declare-styleable name="InputButton">
         <attr name="textButton" format="string" />
     </declare-styleable>
+    <style name="SearchView">
+        <item name="android:editTextColor">@android:color/white</item>
+        <item name="android:textColorHint">@android:color/white</item>
+    </style>
 
 </resources>
