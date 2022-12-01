@@ -16,6 +16,9 @@
         android:theme="@style/Theme.LeagueOfLeguends"
         tools:targetApi="31">
         <activity
+            android:name=".MenuHomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".DetailChampionActivity"
             android:exported="false" />
         <activity
