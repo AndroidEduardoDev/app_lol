@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.artstation.leagueofleguends.DetailChampionActivity
 import com.artstation.leagueofleguends.R
@@ -17,7 +15,7 @@ import com.bumptech.glide.Glide
 
 class ChampionAdapter(private val mList: List<Champion>) :
     RecyclerView.Adapter<ChampionAdapter.ViewHolder>() {
-    var onclick: ((Champion) -> Unit)? = null
+    private val url = "https://ddragon.leagueoflegends.com/cdn/12.22.1/img/champion/"
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.item_card, parent, false)
@@ -27,7 +25,7 @@ class ChampionAdapter(private val mList: List<Champion>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mList[position]
         Glide.with(holder.imageView)
-            .load(item.image)
+            .load(url + item.image)
             .into(holder.imageView)
         holder.textView.text = item.name
         holder.container.setOnClickListener {
@@ -38,9 +36,7 @@ class ChampionAdapter(private val mList: List<Champion>) :
 
     }
 
-    override fun getItemCount(): Int {
-        return mList.size
-    }
+    override fun getItemCount(): Int = mList.size
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val imageView: ImageView = itemView.findViewById(R.id.imageView)

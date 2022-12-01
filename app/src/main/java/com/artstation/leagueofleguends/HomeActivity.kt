@@ -8,6 +8,7 @@ import com.artstation.leagueofleguends.adapter.ChampionAdapter
 import com.artstation.leagueofleguends.data.Champion
 import com.artstation.leagueofleguends.data.ChampionApi
 import com.artstation.leagueofleguends.databinding.ActivityHomeBinding
+import com.google.android.material.navigation.NavigationBarView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,11 +22,37 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        getChampions()
+        setSearch()
+        setNavigation()
     }
 
-    override fun onResume() {
-        super.onResume()
-        getChampions()
+
+
+    private fun setNavigation() {
+        binding.bottomNavigation.setOnItemSelectedListener {
+            when(it.title){
+                "Top" -> setAdapterForChampion("Fighter")
+                "Jungla" -> setAdapterForChampion("Fighter")
+                "Mid" -> setAdapterForChampion("Mage")
+                "Bot" -> setAdapterForChampion("Marksman")
+                "Soporte" -> setAdapterForChampion("Support")
+            }
+            true
+        }
+    }
+
+    private fun setAdapterForChampion(type: String) {
+        val line = arrayListOf<Champion>()
+        dataChamp.map {
+            if (it.champion?.tags?.get(0) == type) {
+                line.add(it)
+            }
+        }
+        setAdapter(line)
+    }
+
+    private fun setSearch() {
         binding.search.setOnQueryTextListener(object : OnQueryTextListener,
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
             override fun onQueryTextChange(name: String): Boolean {
@@ -33,16 +60,18 @@ class HomeActivity : AppCompatActivity() {
                     val data = ArrayList<Champion>()
                     name?.let { names ->
                         dataChamp.map {
-                            if (it.name.lowercase()
-                                    .contains(names.lowercase()) && !data.contains(it)
-                            )
+                            if (it.name.lowercase().contains(names.lowercase())
+                                && !data.contains(it)
+                            ) {
                                 data.add(it)
+                            }
                         }
-                        val adapter = ChampionAdapter(data)
-                        binding.recyclerChampion.adapter = adapter
-
                     }
+                    setAdapter(data)
+                } else {
+                    setAdapter(dataChamp)
                 }
+
                 return false
             }
 
@@ -52,6 +81,11 @@ class HomeActivity : AppCompatActivity() {
             }
 
         })
+    }
+
+    private fun setAdapter(data: java.util.ArrayList<Champion>) {
+        val adapter = ChampionAdapter(data)
+        binding.recyclerChampion.adapter = adapter
     }
 
     private fun getRetrofit(): Retrofit {
@@ -69,20 +103,23 @@ class HomeActivity : AppCompatActivity() {
             if (call != null) {
                 val data = ArrayList<Champion>()
                 call.body()?.data?.map { champion ->
-                    data.add(
-                        Champion(
-                            "http://ddragon.leagueoflegends.com/cdn/12.22.1/img/champion/" + champion.value.image.full,
-                            champion.value.name,
-                            champion.value
+                    if (!data.contains(
+                            Champion(
+                                champion.value.image.full,
+                                champion.value.name,
+                                champion.value
+                            )
                         )
-                    )
-                    dataChamp.addAll(data)
+                    ) {
+                        data.add(
+                            Champion(champion.value.image.full, champion.value.name, champion.value)
+                        )
+                    }
                 }
+                dataChamp.addAll(data)
                 runOnUiThread {
-                    val adapter = ChampionAdapter(data)
-                    binding.recyclerChampion.adapter = adapter
+                    setAdapter(dataChamp)
                 }
-
             }
 
         }
