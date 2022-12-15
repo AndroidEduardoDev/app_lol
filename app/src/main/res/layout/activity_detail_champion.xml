@@ -7,7 +7,6 @@
     android:background="@drawable/card_gradient"
     android:padding="5dp">
 
-
     <ImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
@@ -22,15 +21,15 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.4" />
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@color/blue6transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/g2">
-
 
         <TextView
             android:id="@+id/name"
@@ -47,16 +46,83 @@
 
         <TextView
             android:id="@+id/description"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="0dp"
             android:padding="15dp"
             android:text="Prueba de integracion en el detalle del perfil"
             android:textColor="@color/grey1"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/name" />
 
 
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toBottomOf="@+id/description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/btnQ"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/x_gradient"
+                android:gravity="center"
+                android:text="Q"
+                android:textColor="@color/gold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/btnW"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/x_gradient"
+                android:gravity="center"
+                android:text="W"
+                android:textColor="@color/gold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnQ" />
+
+            <TextView
+                android:id="@+id/btnE"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/x_gradient"
+                android:gravity="center"
+                android:text="E"
+                android:textColor="@color/gold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnW" />
+
+            <TextView
+                android:id="@+id/btnR"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/x_gradient"
+                android:gravity="center"
+                android:text="R"
+                android:textColor="@color/gold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnE" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/g3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.2" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <TextView
         android:id="@+id/cancel"
@@ -69,6 +135,41 @@
         android:textColor="@color/gold"
         android:translationY="20dp"
         app:layout_constraintBottom_toTopOf="@+id/g2"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <VideoView
+        android:id="@+id/visualizer"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="25dp"
+        android:backgroundTint="@color/blue6transparent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/loadingVideo"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="25dp"
+        android:backgroundTint="@color/blue6transparent"
+        android:padding="50dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/cancelView"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/x_gradient"
+        android:gravity="center"
+        android:text="x"
+        android:textColor="@color/gold"
+        android:translationX="-10dp"
+        android:translationY="20dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/visualizer"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,16 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/im_bg"
-    android:padding="15dp"
-    tools:context=".MenuHomeActivity">
+    android:background="@color/blue6">
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
+        app:layout_constraintGuide_percent="1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -22,16 +25,14 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
 
-    <TextView
+    <ImageView
         android:id="@+id/btnchamps"
         android:layout_width="0dp"
-        android:layout_height="180dp"
+        android:layout_height="250dp"
         android:layout_margin="5dp"
-        android:background="@drawable/card_gradient"
         android:gravity="center"
         android:text="Campeones"
         android:textColor="@color/gold"
-        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,18 +41,48 @@
 
     <TextView
         android:layout_width="0dp"
-        android:layout_height="180dp"
-        android:layout_margin="5dp"
-        android:background="@drawable/card_gradient"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
         android:gravity="center"
-        android:text="Runas"
+        android:text="Campeones"
         android:textColor="@color/gold"
-        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.643" />
+
+
+    <ImageView
+        android:id="@+id/runes"
+        android:layout_width="0dp"
+        android:layout_height="250dp"
+        android:layout_margin="5dp"
+        android:gravity="center"
+        android:text="Campeones"
+        android:textColor="@color/gold"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/play"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:gravity="center"
+        android:text="Juega"
+        android:textColor="@color/gold"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnchamps"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.643" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

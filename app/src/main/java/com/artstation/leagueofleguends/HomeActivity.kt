@@ -123,7 +123,6 @@ class HomeActivity : AppCompatActivity() {
                     setAdapterForChampion("Top")
                 }
             }
-
         }
     }
 

@@ -14,7 +14,14 @@
         android:roundIcon="@drawable/im_lol_small"
         android:supportsRtl="true"
         android:theme="@style/Theme.LeagueOfLeguends"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".PlayActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AbilityChampionActivity"
+            android:exported="false" />
         <activity
             android:name=".MenuHomeActivity"
             android:exported="false" />

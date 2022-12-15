@@ -1,11 +1,12 @@
 package com.artstation.leagueofleguends
 
+import android.os.Bundle
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import com.artstation.leagueofleguends.databinding.ActivityMainBinding
 
 class LoginActivity : AppCompatActivity() {
+
     lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,4 +25,5 @@ class LoginActivity : AppCompatActivity() {
             finish()
         }
     }
+
 }

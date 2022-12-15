@@ -4,9 +4,9 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Url
 
-interface ChampionApi {
+interface ServerApi {
     @GET
-    suspend fun getChampions(@Url url: String): Response<ChampionsResponse>
+    suspend fun getChampions(@Url url: String): Response<ChampionsResponseServer>
 
-
+    
 }
