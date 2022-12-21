@@ -7,6 +7,7 @@ import android.speech.tts.TextToSpeech
 import androidx.appcompat.app.AppCompatActivity
 import com.artstation.leagueofleguends.data.ServerApi
 import com.artstation.leagueofleguends.databinding.ActivityPlayBinding
+import com.artstation.leagueofleguends.viewmodel.FarmCalculator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Runnable
@@ -40,6 +41,7 @@ class PlayActivity : AppCompatActivity() {
         var count = 0
         override fun run() {
             getChampions()
+
             if (count++ < 1000) {
                 handler.postDelayed(this, 7000)
             }
@@ -49,7 +51,7 @@ class PlayActivity : AppCompatActivity() {
 
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("http://192.168.0.5:3000/")
+            .baseUrl("http://192.168.1.14:3000/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
@@ -65,11 +67,14 @@ class PlayActivity : AppCompatActivity() {
                     binding.nameChampion.text =
                         champion?.championName + " / " + champion?.summonerName
                     var number = Random.nextInt(0, AUDIOS.size - 1)
-                    textToSpeech?.speak(AUDIOS[number], TextToSpeech.QUEUE_ADD, null)
+
                     binding.kills.text =
                         champion?.scores?.kills?.toString() + "/" + champion?.scores?.deaths?.toString() + "/" + champion?.scores?.assists?.toString()
                     game?.gameData?.gameTime?.let {
                         binding.time.text = it.div(60.0).toString().split(".")[0]
+                        //textToSpeech?.speak(FarmCalculator().minionsCount(it.div(60.0).toString().split(".")[0].toInt(), game.allPlayers.get(0).scores.creepScore.toInt()), TextToSpeech.QUEUE_ADD, null)
+                        textToSpeech?.speak(FarmCalculator().killsCount(it.div(60.0).toString().split(".")[0].toInt(), game.allPlayers.get(0).scores.kills.toInt()), TextToSpeech.QUEUE_ADD, null)
+                        textToSpeech?.speak(FarmCalculator().deadCount( game.allPlayers.get(0).scores.deaths.toInt()), TextToSpeech.QUEUE_ADD, null)
                     }
                 }
             }

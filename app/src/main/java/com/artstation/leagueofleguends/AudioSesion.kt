@@ -23,5 +23,46 @@ val AUDIOS = arrayOf(
     " tu tranquilo hay peores, personas que no tienen manitas",
     " el jungla vino no lo he visto",
     " vamos a buscar las esferas del dragon, por que el otro equipo se esta haciendo el eraldo",
-    " es que me da anciedad"
+    " es que me da anciedad",
+    " yummy es el mejor support"
+)
+
+val FARMEO_MAL = arrayOf(
+
+    " farmea mas ",
+    " Eres una basura farmeando ",
+    " Brayan farmea mejor ",
+    " Ese minion casi te mata"
+)
+
+val FARMEO_BUENO = arrayOf(
+
+    " FARMEA MENOS, es bromis ",
+    " eres el mejor farmeando",
+    " esos minions te temen",
+    " ese minion no supo que lo farmeo",
+    " eres el terror de los minions"
+)
+
+val KILLS_BIEN = arrayOf(
+
+    " eres un asesino ",
+    " ¿ con que farmeando campeones? ",
+    " eres mas asesino que yefri damer "
+)
+
+val KILLS_MAL = arrayOf(
+    " adc diff ",
+    " desinstala lol ",
+    " juega mas un ward ",
+    " que mal",
+    " que asco de jugador",
+    " que pendejo "
+)
+
+
+val MUERTES_MAL = arrayOf(
+    " Has muerto ** veces",
+    " Has muerto ** veces",
+    " Has muerto ** veces"
 )
